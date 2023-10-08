@@ -1,12 +1,7 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
+require(`dotenv`).config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   siteMetadata: {
     title: `Gatsby Blog`,
@@ -31,10 +26,11 @@ module.exports = {
     {
       resolve:`gatsby-source-contentful`,
       options: {
-        spaceId:`ljfjrtduf1zd`,
-        accessToken:`IiSC6iwCvtVVardbqKqqp4ye9K5XVvWI18pktBVfJYE`
+        spaceId:`${process.env.SPACE_ID}`,
+        accessToken:`${process.env.ACCESS_TOKEN}`
       }
     },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
